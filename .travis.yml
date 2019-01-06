@@ -20,3 +20,16 @@ after_success:
   - docker push dasecure/multi-nginx
   - docker push dasecure/multi-server
   - docker push dasecure/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket: arn:aws:s3:::elasticbeanstalk-us-east-1-724415206535
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
