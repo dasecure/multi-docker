@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t vincent/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t dasecure/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run vincent/react-test npm test -- --coverage
+  - docker run dasecure/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t vincent/multi-client ./client
-  - docker build -t vincent/multi-nginx ./nginx
-  - docker build -t vincent/multi-server ./server
-  - docker build -t vincent/multi-worker ./worker
+  - docker build -t dasecure/multi-client ./client
+  - docker build -t dasecure/multi-nginx ./nginx
+  - docker build -t dasecure/multi-server ./server
+  - docker build -t dasecure/multi-worker ./worker
   #docker-cli login
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #take images and push to docker hub
-  - docker push vincent/multi-client
-  - docker push vincent/multi-nginx
-  - docker push vincent/multi-server
-  - docker push vincent/multi-worker
+  - docker push dasecure/multi-client
+  - docker push dasecure/multi-nginx
+  - docker push dasecure/multi-server
+  - docker push dasecure/multi-worker
