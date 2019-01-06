@@ -26,7 +26,7 @@ deploy:
   region: us-east-1
   app: multi-docker
   env: MultiDocker-env
-  bucket: arn:aws:s3:::elasticbeanstalk-us-east-1-724415206535
+  bucket_name: elasticbeanstalk-us-east-1-724415206535
   bucket_path: docker-multi
   on:
     branch: master
